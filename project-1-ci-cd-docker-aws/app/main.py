@@ -4,7 +4,7 @@ app = FastAPI()
 
 @app.get("/")
 def root():
-    return {"message": "CI/CD Pipeline with Docker and AWS is running 🚀"}
+    return {"message": "Auto-deployed from GitHub Actions 🚀"}
 
 @app.get("/health")
 def health():
