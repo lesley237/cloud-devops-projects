@@ -32,8 +32,7 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
             docker pull lesley237/fastapi-app:latest
-            docker stop fastapi-app || true
-            docker rm fastapi-app || true
+            docker rm -f fastapi-app || true
             docker run -d \
               --name fastapi-app \
               -p 80:8000 \
