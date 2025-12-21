@@ -13,4 +13,5 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t sample-app .
+        working-directory: project-1-ci-cd-docker-aws
+        run: docker build -t fastapi-app .
