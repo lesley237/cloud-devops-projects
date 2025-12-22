@@ -1,21 +1,21 @@
-# 🚀 Project 1: CI/CD Pipeline with Docker & GitHub Actions (Auto-Deploy to Azure VM)
+🚀 Project 1: CI/CD Pipeline with Docker & GitHub Actions (Auto-Deploy to Azure VM)
+📌 Project Overview
 
-## 📌 Project Overview
-This project demonstrates a **complete CI/CD pipeline** that automatically builds, pushes, and deploys a **FastAPI application** using **Docker, GitHub Actions, Docker Hub, and an Azure Virtual Machine**.
+This project demonstrates a complete CI/CD pipeline that automatically builds, pushes, and deploys a FastAPI application using Docker, GitHub Actions, Docker Hub, and an Azure Virtual Machine.
 
-Every push to the `main` branch triggers a pipeline that:
-1. Builds a Docker image
-2. Pushes the image to Docker Hub
-3. Connects securely to an Azure VM via SSH
-4. Replaces the running container with the latest version (zero manual steps)
+Every push to the main branch triggers a pipeline that:
 
-This project reflects a **real-world DevOps production workflow**.
+Builds a Docker image
 
----
+Pushes the image to Docker Hub
 
-## 🏗️ Architecture
+Connects securely to an Azure VM via SSH
 
-```text
+Replaces the running container with the latest version (zero manual steps)
+
+This project reflects a real-world, production-style DevOps workflow.
+
+🏗️ Architecture
 Developer → GitHub → GitHub Actions
                      |
                      | (Build & Push)
@@ -28,7 +28,6 @@ Developer → GitHub → GitHub Actions
                      |
                      ↓
                 FastAPI App (Port 80)
-
 
 🛠️ Tech Stack
 
@@ -44,36 +43,31 @@ Cloud: Microsoft Azure (Ubuntu VM)
 
 Automation: SSH-based remote deployment
 
-
 📂 Project Structure
 cloud-devops-projects
 ├── .github
 │   └── workflows
 │       └── deploy.yml       # CI/CD pipeline definition
 ├── project-1-ci-cd-docker-aws
-├── app/
-│   └── main.py              # FastAPI application
+│   ├── app/
+│   │   └── main.py          # FastAPI application
 │   ├── Dockerfile           # Docker build instructions
 │   ├── docker-compose.yml   # Local container orchestration
 │   └── README.md
 
-
 🔁 CI/CD Workflow Explanation
-Trigger
+🔹 Trigger
 
-The pipeline runs automatically on:
+The pipeline runs automatically on every push to the main branch:
 
 on:
   push:
     branches:
       - main
 
-
-Pipeline Steps
-1️⃣ Checkout Code:
-
+🔹 Pipeline Steps
+1️⃣ Checkout Code
 - uses: actions/checkout@v4
-
 
 2️⃣ Login to Docker Hub
 
@@ -85,14 +79,13 @@ DOCKERHUB_TOKEN
 
 - uses: docker/login-action@v3
 
-
 3️⃣ Build & Push Docker Image
-
 docker build -t lesley237/fastapi-app:latest .
 docker push lesley237/fastapi-app:latest
 
-
 4️⃣ Deploy to Azure VM via SSH
+
+Actions performed on the VM:
 
 Pull latest image
 
@@ -107,10 +100,9 @@ docker rm -f fastapi-app || true
 docker image prune -f
 docker run -d --name fastapi-app -p 80:8000 lesley237/fastapi-app:latest
 
-
 🔐 Secrets & Security
 
-All sensitive information is stored securely using GitHub Secrets:
+All sensitive information is stored securely using GitHub Secrets.
 
 Secret Name	Description
 DOCKERHUB_USERNAME	Docker Hub username
@@ -127,15 +119,15 @@ VM_SSH_KEY	Private SSH key
 Endpoint	Description
 /	Application status
 /health	Health check
-
-Example:
+Example
 curl http://<AZURE_VM_PUBLIC_IP>
 
+
 Response:
+
 {
   "message": "Auto-deployed from GitHub Actions 🚀"
 }
-
 
 ✅ Key DevOps Concepts Demonstrated
 
@@ -164,15 +156,18 @@ Cloud-native DevOps practices
 
 ➡ Project 2: Infrastructure as Code (Terraform on Azure)
 
-Virtual Networks (VNet)
-Subnets & Network Security Groups (NSG)
-Azure Virtual Machines
-Automated provisioning using Terraform
+Planned components:
 
+Virtual Networks (VNet)
+
+Subnets & Network Security Groups (NSG)
+
+Azure Virtual Machines
+
+Automated provisioning using Terraform
 
 👤 Author
 
 Atefor Lesley Nkezi
 MSc Computer Science
 Aspiring Cloud & DevOps Engineer
-
