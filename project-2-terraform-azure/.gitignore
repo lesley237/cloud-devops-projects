@@ -1,0 +1,13 @@
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+crash.log
+*.tfvars
+*.tfplan
+
+# SSH keys
+ssh/
+*.pem
+*.key
+*.pub
