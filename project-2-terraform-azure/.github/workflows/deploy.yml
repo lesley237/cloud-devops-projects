@@ -31,8 +31,9 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
+          port: 22
+          timeout: 120s
           script: |
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-app:latest
-            docker stop fastapi-app || true
             docker rm fastapi-app || true
             docker run -d --name fastapi-app -p 80:8000 ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-app:latest
